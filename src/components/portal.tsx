@@ -138,8 +138,12 @@ export function PortalShell({ children, user = students.student }: { children: R
 
   useEffect(() => {
     const warning = window.setTimeout(() => setTimeoutOpen(true), 240000);
-    return () => window.clearTimeout(warning);
-  }, []);
+    const logout = window.setTimeout(() => {
+      toast.info("You were signed out", { description: "Your session ended after a period of inactivity." });
+      void navigate({ to: "/" });
+    }, 300000);
+    return () => { window.clearTimeout(warning); window.clearTimeout(logout); };
+  }, [navigate]);
 
   const signOut = () => void navigate({ to: "/" });
 
