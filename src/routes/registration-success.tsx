@@ -1,0 +1,8 @@
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { Check } from "lucide-react";
+import { AuthShell } from "@/components/portal";
+import { Button } from "@/components/ui/button";
+import { UserType } from "@/lib/mock-portal";
+
+export const Route = createFileRoute("/registration-success")({ validateSearch: (search: Record<string, unknown>) => ({ type: search["type"] === "staff" ? "staff" as UserType : "student" as UserType }), head: () => ({ meta: [{ title: "Account Ready — University of Ilesa Wi-Fi" }, { name: "description", content: "Your university Wi-Fi portal account is ready." }, { property: "og:title", content: "University Wi-Fi Account Ready" }, { property: "og:description", content: "Your University of Ilesa Wi-Fi portal account was created successfully." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: SuccessPage });
+function SuccessPage() { const { type } = Route.useSearch(); const navigate = useNavigate(); return <AuthShell><div className="text-center"><span className="mx-auto grid size-16 place-items-center rounded-full bg-success/10 text-success"><Check className="size-8" /></span><h1 className="mt-6 text-3xl font-semibold">You’re all set!</h1><p className="mt-3 text-base text-muted-foreground">Your account has been created successfully.</p><div className="my-7 rounded-lg border bg-muted/50 p-4"><p className="font-semibold">Your Wi-Fi credentials are ready.</p><p className="mt-1 text-sm text-muted-foreground">Sign in securely to view them from your dashboard.</p></div><Button className="h-11 w-full" onClick={() => void navigate({ to: "/dashboard", search: { type } })}>Go to Dashboard</Button></div></AuthShell>; }
