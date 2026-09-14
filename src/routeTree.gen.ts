@@ -10,33 +10,81 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CreatePasswordRouteImport } from './routes/create-password'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as RegistrationSuccessRouteImport } from './routes/registration-success'
+import { Route as VerifyRouteImport } from './routes/verify'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CreatePasswordRoute = CreatePasswordRouteImport.update({
+  id: '/create-password',
+  path: '/create-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegistrationSuccessRoute = RegistrationSuccessRouteImport.update({
+  id: '/registration-success',
+  path: '/registration-success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyRoute = VerifyRouteImport.update({
+  id: '/verify',
+  path: '/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/create-password': typeof CreatePasswordRoute
+  '/register': typeof RegisterRoute
+  '/registration-success': typeof RegistrationSuccessRoute
+  '/verify': typeof VerifyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/create-password': typeof CreatePasswordRoute
+  '/register': typeof RegisterRoute
+  '/registration-success': typeof RegistrationSuccessRoute
+  '/verify': typeof VerifyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/create-password': typeof CreatePasswordRoute
+  '/register': typeof RegisterRoute
+  '/registration-success': typeof RegistrationSuccessRoute
+  '/verify': typeof VerifyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/create-password' | '/register' | '/registration-success' | '/verify'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    '/' | '/create-password' | '/register' | '/registration-success' | '/verify'
+  id:
+    | '__root__'
+    | '/'
+    | '/create-password'
+    | '/register'
+    | '/registration-success'
+    | '/verify'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CreatePasswordRoute: typeof CreatePasswordRoute
+  RegisterRoute: typeof RegisterRoute
+  RegistrationSuccessRoute: typeof RegistrationSuccessRoute
+  VerifyRoute: typeof VerifyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +96,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/create-password': {
+      id: '/create-password'
+      path: '/create-password'
+      fullPath: '/create-password'
+      preLoaderRoute: typeof CreatePasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/registration-success': {
+      id: '/registration-success'
+      path: '/registration-success'
+      fullPath: '/registration-success'
+      preLoaderRoute: typeof RegistrationSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify': {
+      id: '/verify'
+      path: '/verify'
+      fullPath: '/verify'
+      preLoaderRoute: typeof VerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CreatePasswordRoute: CreatePasswordRoute,
+  RegisterRoute: RegisterRoute,
+  RegistrationSuccessRoute: RegistrationSuccessRoute,
+  VerifyRoute: VerifyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

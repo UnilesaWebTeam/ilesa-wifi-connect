@@ -1,0 +1,7 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ShieldAlert } from "lucide-react";
+import { CredentialCard, PageHeading, PortalShell } from "@/components/portal";
+import { students } from "@/lib/mock-portal";
+
+export const Route = createFileRoute("/credentials")({ head: () => ({ meta: [{ title: "My Wi-Fi Credential — University of Ilesa" }, { name: "description", content: "Securely view your assigned university Wi-Fi credential." }, { property: "og:title", content: "My University Wi-Fi Credential" }, { property: "og:description", content: "Secure access to your assigned University of Ilesa Wi-Fi credential." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: CredentialsPage });
+function CredentialsPage() { return <PortalShell><PageHeading title="Wi-Fi Credentials" description="View the Wi-Fi credentials assigned to your university account." /><CredentialCard detailed /><div className="mt-6 flex gap-3 rounded-xl border bg-card p-5"><ShieldAlert className="mt-0.5 size-5 shrink-0 text-warning" /><div><h2 className="text-sm font-semibold">Keep your Wi-Fi credentials private</h2><p className="mt-1 text-sm leading-6 text-muted-foreground">Anyone who has these credentials may be able to use the university Wi-Fi under your account, depending on the network provider’s access controls.</p></div></div></PortalShell>; }
