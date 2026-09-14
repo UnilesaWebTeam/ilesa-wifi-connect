@@ -59,7 +59,7 @@ export function UserTypeTabs({ value, onChange }: { value: UserType; onChange: (
   );
 }
 
-export function Field({ label, id, error, optional, ...props }: React.ComponentProps<typeof Input> & { label: string; error?: string; optional?: boolean }) {
+export function Field({ label, id, error, optional, ...props }: React.ComponentProps<typeof Input> & { label: string; error?: string | undefined; optional?: boolean | undefined }) {
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
