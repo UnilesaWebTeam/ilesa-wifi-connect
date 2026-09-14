@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CreatePasswordRouteImport } from './routes/create-password'
+import { Route as CredentialsRouteImport } from './routes/credentials'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RegistrationSuccessRouteImport } from './routes/registration-success'
 import { Route as VerifyRouteImport } from './routes/verify'
@@ -23,6 +27,26 @@ const IndexRoute = IndexRouteImport.update({
 const CreatePasswordRoute = CreatePasswordRouteImport.update({
   id: '/create-password',
   path: '/create-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CredentialsRoute = CredentialsRouteImport.update({
+  id: '/credentials',
+  path: '/credentials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -44,6 +68,10 @@ const VerifyRoute = VerifyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/create-password': typeof CreatePasswordRoute
+  '/credentials': typeof CredentialsRoute
+  '/dashboard': typeof DashboardRoute
+  '/help': typeof HelpRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/registration-success': typeof RegistrationSuccessRoute
   '/verify': typeof VerifyRoute
@@ -51,6 +79,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/create-password': typeof CreatePasswordRoute
+  '/credentials': typeof CredentialsRoute
+  '/dashboard': typeof DashboardRoute
+  '/help': typeof HelpRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/registration-success': typeof RegistrationSuccessRoute
   '/verify': typeof VerifyRoute
@@ -59,6 +91,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/create-password': typeof CreatePasswordRoute
+  '/credentials': typeof CredentialsRoute
+  '/dashboard': typeof DashboardRoute
+  '/help': typeof HelpRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/registration-success': typeof RegistrationSuccessRoute
   '/verify': typeof VerifyRoute
@@ -66,14 +102,34 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/create-password' | '/register' | '/registration-success' | '/verify'
+    | '/'
+    | '/create-password'
+    | '/credentials'
+    | '/dashboard'
+    | '/help'
+    | '/profile'
+    | '/register'
+    | '/registration-success'
+    | '/verify'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/create-password' | '/register' | '/registration-success' | '/verify'
+    | '/'
+    | '/create-password'
+    | '/credentials'
+    | '/dashboard'
+    | '/help'
+    | '/profile'
+    | '/register'
+    | '/registration-success'
+    | '/verify'
   id:
     | '__root__'
     | '/'
     | '/create-password'
+    | '/credentials'
+    | '/dashboard'
+    | '/help'
+    | '/profile'
     | '/register'
     | '/registration-success'
     | '/verify'
@@ -82,6 +138,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CreatePasswordRoute: typeof CreatePasswordRoute
+  CredentialsRoute: typeof CredentialsRoute
+  DashboardRoute: typeof DashboardRoute
+  HelpRoute: typeof HelpRoute
+  ProfileRoute: typeof ProfileRoute
   RegisterRoute: typeof RegisterRoute
   RegistrationSuccessRoute: typeof RegistrationSuccessRoute
   VerifyRoute: typeof VerifyRoute
@@ -101,6 +161,34 @@ declare module '@tanstack/react-router' {
       path: '/create-password'
       fullPath: '/create-password'
       preLoaderRoute: typeof CreatePasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/credentials': {
+      id: '/credentials'
+      path: '/credentials'
+      fullPath: '/credentials'
+      preLoaderRoute: typeof CredentialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -130,6 +218,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CreatePasswordRoute: CreatePasswordRoute,
+  CredentialsRoute: CredentialsRoute,
+  DashboardRoute: DashboardRoute,
+  HelpRoute: HelpRoute,
+  ProfileRoute: ProfileRoute,
   RegisterRoute: RegisterRoute,
   RegistrationSuccessRoute: RegistrationSuccessRoute,
   VerifyRoute: VerifyRoute,
