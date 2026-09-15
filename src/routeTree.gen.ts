@@ -14,6 +14,7 @@ import { Route as CreatePasswordRouteImport } from './routes/create-password'
 import { Route as CredentialsRouteImport } from './routes/credentials'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as HelpRouteImport } from './routes/help'
+import { Route as LoginVerifyRouteImport } from './routes/login-verify'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RegistrationSuccessRouteImport } from './routes/registration-success'
@@ -44,6 +45,11 @@ const HelpRoute = HelpRouteImport.update({
   path: '/help',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginVerifyRoute = LoginVerifyRouteImport.update({
+  id: '/login-verify',
+  path: '/login-verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/credentials': typeof CredentialsRoute
   '/dashboard': typeof DashboardRoute
   '/help': typeof HelpRoute
+  '/login-verify': typeof LoginVerifyRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/registration-success': typeof RegistrationSuccessRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/credentials': typeof CredentialsRoute
   '/dashboard': typeof DashboardRoute
   '/help': typeof HelpRoute
+  '/login-verify': typeof LoginVerifyRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/registration-success': typeof RegistrationSuccessRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/credentials': typeof CredentialsRoute
   '/dashboard': typeof DashboardRoute
   '/help': typeof HelpRoute
+  '/login-verify': typeof LoginVerifyRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/registration-success': typeof RegistrationSuccessRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/credentials'
     | '/dashboard'
     | '/help'
+    | '/login-verify'
     | '/profile'
     | '/register'
     | '/registration-success'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/credentials'
     | '/dashboard'
     | '/help'
+    | '/login-verify'
     | '/profile'
     | '/register'
     | '/registration-success'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/credentials'
     | '/dashboard'
     | '/help'
+    | '/login-verify'
     | '/profile'
     | '/register'
     | '/registration-success'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   CredentialsRoute: typeof CredentialsRoute
   DashboardRoute: typeof DashboardRoute
   HelpRoute: typeof HelpRoute
+  LoginVerifyRoute: typeof LoginVerifyRoute
   ProfileRoute: typeof ProfileRoute
   RegisterRoute: typeof RegisterRoute
   RegistrationSuccessRoute: typeof RegistrationSuccessRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HelpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login-verify': {
+      id: '/login-verify'
+      path: '/login-verify'
+      fullPath: '/login-verify'
+      preLoaderRoute: typeof LoginVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   CredentialsRoute: CredentialsRoute,
   DashboardRoute: DashboardRoute,
   HelpRoute: HelpRoute,
+  LoginVerifyRoute: LoginVerifyRoute,
   ProfileRoute: ProfileRoute,
   RegisterRoute: RegisterRoute,
   RegistrationSuccessRoute: RegistrationSuccessRoute,
