@@ -72,7 +72,7 @@ export function Field({ label, id, error, optional, ...props }: React.ComponentP
   );
 }
 
-export function PasswordField({ label, id, value, onChange, placeholder = "Enter your password", error }: { label: string; id: string; value: string; onChange: (value: string) => void; placeholder?: string; error?: string }) {
+export function PasswordField({ label, id, value, onChange, placeholder = "Enter your password", error }: { label: string; id: string; value: string; onChange: (value: string) => void; placeholder?: string | undefined; error?: string | undefined }) {
   const [visible, setVisible] = useState(false);
   return (
     <div className="space-y-2">
