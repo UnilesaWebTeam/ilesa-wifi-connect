@@ -19,10 +19,16 @@ import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RegistrationSuccessRouteImport } from './routes/registration-success'
 import { Route as VerifyRouteImport } from './routes/verify'
+import { Route as AdminAuditLogsRouteImport } from './routes/admin/audit-logs'
 import { Route as AdminCredentialsRouteImport } from './routes/admin/credentials'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminProfileRouteImport } from './routes/admin/profile'
+import { Route as AdminReportsRouteImport } from './routes/admin/reports'
 import { Route as AdminWifiUsersRouteImport } from './routes/admin/wifi-users'
+import { Route as SuperAdminAdminsRouteImport } from './routes/super-admin/admins'
+import { Route as SuperAdminDashboardRouteImport } from './routes/super-admin/dashboard'
+import { Route as SuperAdminSettingsRouteImport } from './routes/super-admin/settings'
 import { Route as AdminUsersIndexRouteImport } from './routes/admin/users/index'
 import { Route as AdminUsersUserIdRouteImport } from './routes/admin/users/$userId'
 
@@ -76,6 +82,11 @@ const VerifyRoute = VerifyRouteImport.update({
   path: '/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAuditLogsRoute = AdminAuditLogsRouteImport.update({
+  id: '/admin/audit-logs',
+  path: '/admin/audit-logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminCredentialsRoute = AdminCredentialsRouteImport.update({
   id: '/admin/credentials',
   path: '/admin/credentials',
@@ -91,9 +102,34 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminProfileRoute = AdminProfileRouteImport.update({
+  id: '/admin/profile',
+  path: '/admin/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/admin/reports',
+  path: '/admin/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminWifiUsersRoute = AdminWifiUsersRouteImport.update({
   id: '/admin/wifi-users',
   path: '/admin/wifi-users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperAdminAdminsRoute = SuperAdminAdminsRouteImport.update({
+  id: '/super-admin/admins',
+  path: '/super-admin/admins',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperAdminDashboardRoute = SuperAdminDashboardRouteImport.update({
+  id: '/super-admin/dashboard',
+  path: '/super-admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperAdminSettingsRoute = SuperAdminSettingsRouteImport.update({
+  id: '/super-admin/settings',
+  path: '/super-admin/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminUsersIndexRoute = AdminUsersIndexRouteImport.update({
@@ -118,10 +154,16 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/registration-success': typeof RegistrationSuccessRoute
   '/verify': typeof VerifyRoute
+  '/admin/audit-logs': typeof AdminAuditLogsRoute
   '/admin/credentials': typeof AdminCredentialsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/reports': typeof AdminReportsRoute
   '/admin/wifi-users': typeof AdminWifiUsersRoute
+  '/super-admin/admins': typeof SuperAdminAdminsRoute
+  '/super-admin/dashboard': typeof SuperAdminDashboardRoute
+  '/super-admin/settings': typeof SuperAdminSettingsRoute
   '/admin/users/$userId': typeof AdminUsersUserIdRoute
   '/admin/users/': typeof AdminUsersIndexRoute
 }
@@ -136,10 +178,16 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/registration-success': typeof RegistrationSuccessRoute
   '/verify': typeof VerifyRoute
+  '/admin/audit-logs': typeof AdminAuditLogsRoute
   '/admin/credentials': typeof AdminCredentialsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/reports': typeof AdminReportsRoute
   '/admin/wifi-users': typeof AdminWifiUsersRoute
+  '/super-admin/admins': typeof SuperAdminAdminsRoute
+  '/super-admin/dashboard': typeof SuperAdminDashboardRoute
+  '/super-admin/settings': typeof SuperAdminSettingsRoute
   '/admin/users/$userId': typeof AdminUsersUserIdRoute
   '/admin/users': typeof AdminUsersIndexRoute
 }
@@ -155,10 +203,16 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/registration-success': typeof RegistrationSuccessRoute
   '/verify': typeof VerifyRoute
+  '/admin/audit-logs': typeof AdminAuditLogsRoute
   '/admin/credentials': typeof AdminCredentialsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/reports': typeof AdminReportsRoute
   '/admin/wifi-users': typeof AdminWifiUsersRoute
+  '/super-admin/admins': typeof SuperAdminAdminsRoute
+  '/super-admin/dashboard': typeof SuperAdminDashboardRoute
+  '/super-admin/settings': typeof SuperAdminSettingsRoute
   '/admin/users/$userId': typeof AdminUsersUserIdRoute
   '/admin/users/': typeof AdminUsersIndexRoute
 }
@@ -175,10 +229,16 @@ export interface FileRouteTypes {
     | '/register'
     | '/registration-success'
     | '/verify'
+    | '/admin/audit-logs'
     | '/admin/credentials'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/profile'
+    | '/admin/reports'
     | '/admin/wifi-users'
+    | '/super-admin/admins'
+    | '/super-admin/dashboard'
+    | '/super-admin/settings'
     | '/admin/users/$userId'
     | '/admin/users/'
   fileRoutesByTo: FileRoutesByTo
@@ -193,10 +253,16 @@ export interface FileRouteTypes {
     | '/register'
     | '/registration-success'
     | '/verify'
+    | '/admin/audit-logs'
     | '/admin/credentials'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/profile'
+    | '/admin/reports'
     | '/admin/wifi-users'
+    | '/super-admin/admins'
+    | '/super-admin/dashboard'
+    | '/super-admin/settings'
     | '/admin/users/$userId'
     | '/admin/users'
   id:
@@ -211,10 +277,16 @@ export interface FileRouteTypes {
     | '/register'
     | '/registration-success'
     | '/verify'
+    | '/admin/audit-logs'
     | '/admin/credentials'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/profile'
+    | '/admin/reports'
     | '/admin/wifi-users'
+    | '/super-admin/admins'
+    | '/super-admin/dashboard'
+    | '/super-admin/settings'
     | '/admin/users/$userId'
     | '/admin/users/'
   fileRoutesById: FileRoutesById
@@ -230,10 +302,16 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   RegistrationSuccessRoute: typeof RegistrationSuccessRoute
   VerifyRoute: typeof VerifyRoute
+  AdminAuditLogsRoute: typeof AdminAuditLogsRoute
   AdminCredentialsRoute: typeof AdminCredentialsRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminProfileRoute: typeof AdminProfileRoute
+  AdminReportsRoute: typeof AdminReportsRoute
   AdminWifiUsersRoute: typeof AdminWifiUsersRoute
+  SuperAdminAdminsRoute: typeof SuperAdminAdminsRoute
+  SuperAdminDashboardRoute: typeof SuperAdminDashboardRoute
+  SuperAdminSettingsRoute: typeof SuperAdminSettingsRoute
   AdminUsersUserIdRoute: typeof AdminUsersUserIdRoute
   AdminUsersIndexRoute: typeof AdminUsersIndexRoute
 }
@@ -310,6 +388,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/audit-logs': {
+      id: '/admin/audit-logs'
+      path: '/admin/audit-logs'
+      fullPath: '/admin/audit-logs'
+      preLoaderRoute: typeof AdminAuditLogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/credentials': {
       id: '/admin/credentials'
       path: '/admin/credentials'
@@ -331,11 +416,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/profile': {
+      id: '/admin/profile'
+      path: '/admin/profile'
+      fullPath: '/admin/profile'
+      preLoaderRoute: typeof AdminProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/admin/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/wifi-users': {
       id: '/admin/wifi-users'
       path: '/admin/wifi-users'
       fullPath: '/admin/wifi-users'
       preLoaderRoute: typeof AdminWifiUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/super-admin/admins': {
+      id: '/super-admin/admins'
+      path: '/super-admin/admins'
+      fullPath: '/super-admin/admins'
+      preLoaderRoute: typeof SuperAdminAdminsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/super-admin/dashboard': {
+      id: '/super-admin/dashboard'
+      path: '/super-admin/dashboard'
+      fullPath: '/super-admin/dashboard'
+      preLoaderRoute: typeof SuperAdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/super-admin/settings': {
+      id: '/super-admin/settings'
+      path: '/super-admin/settings'
+      fullPath: '/super-admin/settings'
+      preLoaderRoute: typeof SuperAdminSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/users/': {
@@ -366,10 +486,16 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   RegistrationSuccessRoute: RegistrationSuccessRoute,
   VerifyRoute: VerifyRoute,
+  AdminAuditLogsRoute: AdminAuditLogsRoute,
   AdminCredentialsRoute: AdminCredentialsRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminProfileRoute: AdminProfileRoute,
+  AdminReportsRoute: AdminReportsRoute,
   AdminWifiUsersRoute: AdminWifiUsersRoute,
+  SuperAdminAdminsRoute: SuperAdminAdminsRoute,
+  SuperAdminDashboardRoute: SuperAdminDashboardRoute,
+  SuperAdminSettingsRoute: SuperAdminSettingsRoute,
   AdminUsersUserIdRoute: AdminUsersUserIdRoute,
   AdminUsersIndexRoute: AdminUsersIndexRoute,
 }
