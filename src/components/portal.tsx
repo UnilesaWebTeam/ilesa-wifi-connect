@@ -40,9 +40,10 @@ export function Brand({ compact = false, inverse = false }: { compact?: boolean;
   );
 }
 
-export function UserTypeTabs({ value, onChange }: { value: UserType; onChange: (type: UserType) => void }) {
+export function UserTypeTabs({ value, onChange, includeAdmin = false }: { value: UserType; onChange: (type: UserType) => void; includeAdmin?: boolean }) {
+  const navigate = useNavigate();
   return (
-    <div className="grid grid-cols-2 rounded-lg bg-muted p-1" role="tablist" aria-label="Account type">
+    <div className={cn("grid rounded-lg bg-muted p-1", includeAdmin ? "grid-cols-3" : "grid-cols-2")} role="tablist" aria-label="Account type">
       {(["student", "staff"] as const).map((type) => (
         <button
           key={type}
@@ -55,6 +56,17 @@ export function UserTypeTabs({ value, onChange }: { value: UserType; onChange: (
           {type}
         </button>
       ))}
+      {includeAdmin && (
+        <button
+          type="button"
+          role="tab"
+          aria-selected={false}
+          onClick={() => void navigate({ to: "/admin/login" })}
+          className="h-10 rounded-md text-sm font-semibold text-muted-foreground transition-all hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          Admin
+        </button>
+      )}
     </div>
   );
 }
