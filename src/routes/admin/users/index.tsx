@@ -101,7 +101,7 @@ function UsersPage() {
                         <DropdownMenuItem onClick={() => void navigate({ to: "/admin/users/$userId", params: { userId: user.id } })}>View Profile</DropdownMenuItem>
                         <DropdownMenuItem onClick={() => toast.info(`Credential status: ${user.credentialStatus}`)}>View Credential Status</DropdownMenuItem>
                         <DropdownMenuItem onClick={() => toast.info("Activity opened", { description: `Recent activity for ${user.name}.` })}>View Activity</DropdownMenuItem>
-                        <DropdownMenuItem variant="destructive" onClick={() => setDisableTarget(user.name)}>Disable Account</DropdownMenuItem>
+                        <DropdownMenuItem className="text-destructive focus:text-destructive" onClick={() => setDisableTarget(user.name)}>Disable Account</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </Td>

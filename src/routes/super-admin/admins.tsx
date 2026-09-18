@@ -67,7 +67,7 @@ function AdminManagementPage() {
                     <DropdownMenuItem onClick={() => setPermissionsFor(account.adminId)}>Edit Permissions</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => toast.success("Access reset link sent", { description: account.email })}>Reset Access</DropdownMenuItem>
                     {account.status === "Active"
-                      ? <DropdownMenuItem variant="destructive" onClick={() => setDisableTarget(account.name)}>Disable</DropdownMenuItem>
+                      ? <DropdownMenuItem className="text-destructive focus:text-destructive" onClick={() => setDisableTarget(account.name)}>Disable</DropdownMenuItem>
                       : <DropdownMenuItem onClick={() => toast.success("Administrator reactivated", { description: account.name })}>Reactivate</DropdownMenuItem>}
                   </DropdownMenuContent>
                 </DropdownMenu>
