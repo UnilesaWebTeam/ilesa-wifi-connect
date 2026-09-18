@@ -55,7 +55,7 @@ function initials(name: string) {
   return name.split(" ").filter((part) => !part.includes(".")).map((part) => part[0]).slice(0, 2).join("");
 }
 
-function NavLinks({ items, pathname, onNavigate }: { items: NavItem[]; pathname: string; onNavigate?: () => void }) {
+function NavLinks({ items, pathname, onNavigate }: { items: NavItem[]; pathname: string; onNavigate?: (() => void) | undefined }) {
   return (
     <>
       {items.map((item) => {

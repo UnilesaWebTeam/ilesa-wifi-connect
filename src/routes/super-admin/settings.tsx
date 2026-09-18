@@ -87,7 +87,7 @@ function Grid({ children }: { children: ReactNode }) {
 
 function Choice({ options }: { options: string[] }) {
   return (
-    <Select defaultValue={options[0]}>
+    <Select defaultValue={options[0] ?? ""}>
       <SelectTrigger className="h-11"><SelectValue /></SelectTrigger>
       <SelectContent>{options.map((option) => <SelectItem key={option} value={option}>{option}</SelectItem>)}</SelectContent>
     </Select>
