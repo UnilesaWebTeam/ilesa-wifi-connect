@@ -5,7 +5,7 @@ import { Brand, Field, FormAlert, PasswordField } from "@/components/portal";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { AdminRole, setAdminSession } from "@/lib/mock-admin";
+import { AdminRole } from "@/lib/mock-admin";
 
 export const Route = createFileRoute("/admin/login")({
   head: () => ({
@@ -86,6 +86,7 @@ function AdminLoginPage() {
               </div>
             </div>
             <div className="mt-7 space-y-3 text-center">
+              <p className="text-sm text-muted-foreground">Super administrator? <Link to="/super-admin/login" className="font-semibold text-primary hover:underline">Sign in here</Link></p>
               <p className="text-sm text-muted-foreground">Are you a student or staff member?</p>
               <Button asChild variant="outline" className="h-11 w-full"><Link to="/">Go to Student/Staff Portal</Link></Button>
               <p className="text-xs text-muted-foreground">Authorized university personnel only.</p>
