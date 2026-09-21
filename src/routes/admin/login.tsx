@@ -32,8 +32,7 @@ function AdminLoginPage() {
 
   const signIn = (role: AdminRole) => {
     setLoading(true);
-    setAdminSession(role);
-    window.setTimeout(() => void navigate({ to: role === "super-admin" ? "/super-admin/dashboard" : "/admin/dashboard" }), 700);
+    window.setTimeout(() => void navigate({ to: "/admin/verify", search: { role } }), 700);
   };
 
   const submit = (event: FormEvent) => {
