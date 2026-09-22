@@ -16,7 +16,6 @@ import {
   UserCog,
   UserRound,
   Users,
-  Wifi,
   X,
 } from "lucide-react";
 import { ComponentType, ReactNode, useState } from "react";
