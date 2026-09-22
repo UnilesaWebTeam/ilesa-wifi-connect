@@ -48,14 +48,15 @@ const availablePool = credentialPool.filter((entry) => entry.status === "Availab
 const recentRegistrations = managedUsers.slice(0, 4);
 
 function DistributionRow({ label, count, total }: { label: string; count: number; total: number }) {
-  const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+  const pct = total > 0 ? (count / total) * 100 : 0;
+  const pctLabel = pct > 0 && pct < 1 ? "<1%" : `${Math.round(pct)}%`;
   return (
     <div>
       <div className="flex items-baseline justify-between gap-3 text-sm">
         <span className="text-foreground/80">{label}</span>
         <span className="shrink-0 font-semibold tabular-nums">
           {count.toLocaleString()}
-          <span className="ml-1 text-xs font-normal text-muted-foreground">({pct}%)</span>
+          <span className="ml-1 text-xs font-normal text-muted-foreground">({pctLabel})</span>
         </span>
       </div>
       <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-muted">
