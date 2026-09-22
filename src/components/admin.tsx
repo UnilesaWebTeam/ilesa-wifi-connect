@@ -183,16 +183,30 @@ export function RoleBadge({ role }: { role: string }) {
   return <span className="ml-auto rounded-md border border-primary/20 bg-primary/8 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-primary">{role}</span>;
 }
 
-export function StatCard({ icon: Icon, label, value, hint }: { icon: ComponentType<{ className?: string }>; label: string; value: string; hint?: string }) {
-  return (
-    <div className="rounded-xl border bg-card p-5 shadow-soft">
+export function StatCard({ icon: Icon, label, value, hint, onClick, active = false }: { icon: ComponentType<{ className?: string }>; label: string; value: string; hint?: string; onClick?: () => void; active?: boolean }) {
+  const content = (
+    <>
       <div className="flex items-start justify-between">
         <p className="text-sm font-medium text-muted-foreground">{label}</p>
-        <span className="grid size-9 place-items-center rounded-lg bg-primary/8 text-primary"><Icon className="size-[18px]" /></span>
+        <span className={cn("grid size-9 place-items-center rounded-lg text-primary", active ? "bg-primary/15" : "bg-primary/8")}><Icon className="size-[18px]" /></span>
       </div>
       <p className="mt-3 text-[28px] font-semibold leading-none tracking-tight">{value}</p>
       {hint && <p className="mt-2 text-xs text-muted-foreground">{hint}</p>}
-    </div>
+    </>
+  );
+  if (!onClick) return <div className="rounded-xl border bg-card p-5 shadow-soft">{content}</div>;
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={cn(
+        "rounded-xl border bg-card p-5 text-left shadow-soft transition-all hover:border-primary/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+        active && "border-primary/60 ring-2 ring-primary/25",
+      )}
+    >
+      {content}
+    </button>
   );
 }
 
