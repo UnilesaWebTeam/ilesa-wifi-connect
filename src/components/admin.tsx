@@ -16,7 +16,6 @@ import {
   UserCog,
   UserRound,
   Users,
-  Wifi,
   X,
 } from "lucide-react";
 import { ComponentType, ReactNode, useState } from "react";
@@ -34,7 +33,6 @@ type NavItem = { to: string; label: string; icon: ComponentType<{ className?: st
 const mainNav: NavItem[] = [
   { to: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/admin/users", label: "Students & Staff", icon: Users },
-  { to: "/admin/wifi-users", label: "Wi-Fi Users", icon: Wifi },
   { to: "/admin/credentials", label: "Credentials", icon: KeyRound },
   { to: "/admin/reports", label: "Reports", icon: FileBarChart },
   { to: "/admin/audit-logs", label: "Audit Logs", icon: ScrollText },
